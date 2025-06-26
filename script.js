@@ -11,12 +11,18 @@ function addTask() {
         } 
     
     const li = document.createElement('li'); // Create a list item
-    li.textContent = taskText;               // Set the text content
+    const span = document.createElement('span');
+    span.textContent = taskText;
 
-    // Add click event to remove task when clicked
-    li.onclick = function() {
-        li.remove();
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '🗑️';
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.onclick = function() {
+        li.remove(); // Remove the task when button is clicked
     };
+
+    li.appendChild(span); // Add text to the list item
+    li.appendChild(deleteBtn); // Add delete button to the list item
 
     taskList.appendChild(li); // Add to the list
     input.value = '';  // Clear input field
